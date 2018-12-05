@@ -31,6 +31,7 @@ export default class StepIndicator extends PureComponent {
       stepIndicatorLabelCurrentColor: "#000000",
       stepIndicatorLabelFinishedColor: "#ffffff",
       stepIndicatorLabelUnFinishedColor: "rgba(255,255,255,0.5)",
+      labelFont: "Avenir",
       labelColor: "#000000",
       labelSize: 13,
       currentStepLabelColor: "#4aae4f"
@@ -187,10 +188,10 @@ export default class StepIndicator extends PureComponent {
   renderStepLabels = () => {
     const { labels, direction, currentPosition } = this.props;
     var labelViews = labels.map((label, index) => {
-      const selectedStepLabelStyle =
-        index === currentPosition
-          ? { color: this.state.customStyles.currentStepLabelColor }
-          : { color: this.state.customStyles.labelColor };
+      const selectedStepLabelStyle = {
+        fontFamily: this.state.customStyles.labelFont,
+        color: (index ==== currentPosition) ? this.state.customStyles.currentStepLabelColor : this.state.customStyles.labelColor
+      };
       return (
         <TouchableWithoutFeedback
           style={styles.stepLabelItem}
