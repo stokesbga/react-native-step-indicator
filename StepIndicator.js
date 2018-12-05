@@ -38,6 +38,7 @@ export default class StepIndicator extends PureComponent {
       stepIndicatorLabelFinishedColor: "#ffffff",
       stepIndicatorLabelUnFinishedColor: "rgba(255,255,255,0.5)",
       labelFont: "Avenir",
+      labelFontWeight: '400',
       labelColor: "#000000",
       labelSize: 13,
       currentStepLabelColor: "#4aae4f"
@@ -271,17 +272,10 @@ export default class StepIndicator extends PureComponent {
 
   renderStep = position => {
     const {
-      currentPosition,
-      stepCount,
-      direction,
       renderStepIndicator
     } = this.props;
     let stepStyle;
     let indicatorLabelStyle;
-    const separatorStyle =
-      direction === "vertical"
-        ? { width: this.state.customStyles.separatorStrokeWidth, zIndex: 10 }
-        : { height: this.state.customStyles.separatorStrokeWidth };
     switch (this.getStepStatus(position)) {
       case STEP_STATUS.CURRENT: {
         stepStyle = {
@@ -294,6 +288,7 @@ export default class StepIndicator extends PureComponent {
         };
         indicatorLabelStyle = {
           fontFamily: this.state.customStyles.labelFont,
+          fontWeight: this.state.customStyles.labelFontWeight,
           fontSize: this.state.customStyles.currentStepIndicatorLabelFontSize,
           color: this.state.customStyles.stepIndicatorLabelCurrentColor
         };
@@ -311,6 +306,7 @@ export default class StepIndicator extends PureComponent {
         };
         indicatorLabelStyle = {
           fontFamily: this.state.customStyles.labelFont,
+          fontWeight: this.state.customStyles.labelFontWeight,
           fontSize: this.state.customStyles.stepIndicatorLabelFontSize,
           color: this.state.customStyles.stepIndicatorLabelFinishedColor
         };
@@ -329,6 +325,7 @@ export default class StepIndicator extends PureComponent {
         indicatorLabelStyle = {
           overflow: "hidden",
           fontFamily: this.state.customStyles.labelFont,
+          fontWeight: this.state.customStyles.labelFontWeight,
           fontSize: this.state.customStyles.stepIndicatorLabelFontSize,
           color: this.state.customStyles.stepIndicatorLabelUnFinishedColor
         };
@@ -420,7 +417,6 @@ const styles = StyleSheet.create({
   stepLabel: {
     fontSize: 12,
     textAlign: "center",
-    fontWeight: "500"
   },
   stepLabelItem: {
     flex: 1,
